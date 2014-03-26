@@ -1,0 +1,21 @@
+{
+    "name": "Rdio Ad Muter",
+    "description": "Automatically mute Rdio ads",
+    "version": "0.1",
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+        "tabs",
+        "nativeMessaging",
+        "*://*.rdio.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["*://*.rdio.com/*"],
+            "js": ["inject.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "manifest_version": 2
+}
