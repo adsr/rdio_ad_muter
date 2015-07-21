@@ -5,13 +5,25 @@
             return false;
         }
         var curAdPlaying = false;
-        el.addEventListener("DOMSubtreeModified", function() {
-            var adPlaying = this.className && this.className.indexOf("playing_ad") != -1;
-            if (adPlaying != curAdPlaying) {
-                chrome.runtime.sendMessage({adPlaying: adPlaying});
-                curAdPlaying = adPlaying;
+        var observer = new WebKitMutationObserver(function (mutations) {
+            for (var i in mutations) {
+                var mutation = mutations[i].target;
+                var adPlaying = mutation
+                    && mutation.className
+                    && mutation.className.indexOf("playing_ad") != -1;
+                if (adPlaying != curAdPlaying) {
+                    chrome.runtime.sendMessage({adPlaying: adPlaying});
+                    curAdPlaying = adPlaying;
+                    return;
+                }
             }
-        }, false);
+        });
+        observer.observe(el, {
+            childList: false,
+            attributes: true,
+            characterData: false,
+            subtree: false
+        });
         return true;
     };
     (function reallyHookFunc() {

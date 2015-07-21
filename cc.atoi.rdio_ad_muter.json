@@ -1,7 +1,7 @@
 {
     "name": "cc.atoi.rdio_ad_muter",
     "description": "Rdio Ad Muter",
-    "path": "/home/adam/bin/rdio_ad_muter.php",
+    "path": "/home/adam/rdio_ad_muter/rdio_ad_muter.php",
     "type": "stdio",
     "allowed_origins": [
         "chrome-extension://cpcdenjbdmheifnacfmnmmmpiblbbhfk/"

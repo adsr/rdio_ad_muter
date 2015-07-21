@@ -1,7 +1,7 @@
 {
     "name": "Rdio Ad Muter",
     "description": "Automatically mute Rdio ads",
-    "version": "0.1",
+    "version": "0.2",
     "background": {
         "scripts": ["background.js"]
     },
